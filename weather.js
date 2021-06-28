@@ -7,7 +7,13 @@ document.getElementById('submit-btn').addEventListener('click', function () {
         .then(data => {
            var weatherDetails = data.weather[0];
             document.getElementById('city-name').innerText = data.name;
-            document.getElementById('city-temp').innerText = data.main.temp;
+
+            let weatherTempInKelvin = data.main.temp;
+            let weatherTempInCelsius = Math.round(weatherTempInKelvin - 273.15);
+
+
+            document.getElementById('city-temp').innerText = weatherTempInCelsius;
+           
             document.getElementById('city-weather').innerText = weatherDetails.main;
             
            
